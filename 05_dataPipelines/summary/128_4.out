@@ -1,0 +1,78 @@
+threading set:  128 128
+Parameters set, preparing dataloading
+{
+    "data": {
+        "handler": "ilsvrc_dataset",
+        "batch_size": 256,
+        "train_filelist": "/lus/grand/projects/ALCFAITP/ilsvrc_train_filelist.txt",
+        "test_filelist": "/lus/grand/projects/ALCFAITP/ilsvrc_val_filelist.txt",
+        "shuffle_buffer": 200000,
+        "reshuffle_each_iteration": true,
+        "num_parallel_readers": 128,
+        "prefetch_buffer_size": 4,
+        "crop_image_size": [
+            256,
+            256
+        ],
+        "num_classes": 1000,
+        "num_channels": 3
+    }
+}
+num labels: 1000
+build dataset /lus/grand/projects/ALCFAITP/ilsvrc_train_filelist.txt
+input filelist contains 1281167 files, estimated batches per rank 5004
+build dataset /lus/grand/projects/ALCFAITP/ilsvrc_val_filelist.txt
+input filelist contains 50000 files, estimated batches per rank 195
+Datasets ready, creating network.
+Initial Image size:  (256, 256, 256, 3)
+output shape: (256, 1000)
+Model: "res_net34"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ sequential (Sequential)     (256, 64, 64, 64)         9664      
+                                                                 
+ sequential_1 (Sequential)   (256, 64, 64, 64)         223104    
+                                                                 
+ residual_downsample (Residu  multiple                 230784    
+ alDownsample)                                                   
+                                                                 
+ sequential_2 (Sequential)   (256, 32, 32, 128)        888576    
+                                                                 
+ residual_downsample_1 (Resi  multiple                 920320    
+ dualDownsample)                                                 
+                                                                 
+ sequential_3 (Sequential)   (256, 16, 16, 256)        5911040   
+                                                                 
+ residual_downsample_2 (Resi  multiple                 3675648   
+ dualDownsample)                                                 
+                                                                 
+ sequential_4 (Sequential)   (256, 8, 8, 512)          9447424   
+                                                                 
+ average_pooling2d (AverageP  multiple                 0         
+ ooling2D)                                                       
+                                                                 
+ flatten (Flatten)           multiple                  0         
+                                                                 
+ dense (Dense)               multiple                  513000    
+                                                                 
+=================================================================
+Total params: 21,819,560
+Trainable params: 21,804,328
+Non-trainable params: 15,232
+_________________________________________________________________
+None
+start profiler
+Finished step 1 of 5004 in epoch 0,loss=194.969, acc=0.000 (4.313 img/s).
+Finished step 2 of 5004 in epoch 0,loss=69.204, acc=0.000 (564.194 img/s).
+Finished step 3 of 5004 in epoch 0,loss=35.408, acc=0.000 (1027.681 img/s).
+Finished step 4 of 5004 in epoch 0,loss=25.823, acc=0.004 (1094.220 img/s).
+Finished step 5 of 5004 in epoch 0,loss=16.780, acc=0.000 (476.563 img/s).
+Finished step 6 of 5004 in epoch 0,loss=13.209, acc=0.016 (877.618 img/s).
+Finished step 7 of 5004 in epoch 0,loss=9.980, acc=0.023 (1306.848 img/s).
+Finished step 8 of 5004 in epoch 0,loss=9.024, acc=0.004 (1343.652 img/s).
+Finished step 9 of 5004 in epoch 0,loss=7.979, acc=0.008 (48.805 img/s).
+Finished step 10 of 5004 in epoch 0,loss=7.524, acc=0.008 (160.482 img/s).
+Finished step 11 of 5004 in epoch 0,loss=7.235, acc=0.000 (248.931 img/s).
+stop profiler
+mean image/s =   714.90   standard deviation:   454.05
