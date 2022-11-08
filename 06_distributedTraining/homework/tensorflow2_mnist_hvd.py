@@ -152,7 +152,7 @@ for ep in range(args.epochs):
         training_loss += loss_value/nstep
         training_acc += acc/nstep
         if batch % 100 == 0: 
-            checkpoint.save(checkpoint_dir)
+            #checkpoint.save(checkpoint_dir)
             print('Epoch - %d, step #%06d/%06d\tLoss: %.6f' % (ep, batch, nstep, loss_value))
 
     #Ruyi hvd start
@@ -181,7 +181,7 @@ for ep in range(args.epochs):
     metrics['valid_acc'].append(test_acc_syn.numpy())
     metrics['valid_loss'].append(test_loss_syn.numpy())
     metrics['time_per_epochs'].append(tt1 - tt0) 
-checkpoint.save(checkpoint_dir)
+#checkpoint.save(checkpoint_dir)
 np.savetxt("metrics.dat", np.array([metrics['train_acc'], metrics['train_loss'], metrics['valid_acc'], metrics['valid_loss'], metrics['time_per_epochs']]).transpose())
 t1 = time.time()
 print("Total training time: %s seconds" %(t1 - t0))
